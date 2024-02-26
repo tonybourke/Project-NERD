@@ -1,0 +1,26 @@
+# topology documentation: http://containerlab.dev/lab-examples/srl-ceos-4.31/
+name: mcast
+
+topology:
+  nodes:
+    spine1:
+      kind: ceos
+      image: ceos-4.31:latest
+    leaf1:
+      kind: ceos
+      image: ceos-4.31:latest
+    leaf2:
+      kind: ceos
+      image: ceos-4.31:latest
+    host1:
+      kind: linux
+      image: almalinux/9-base:latest
+    host2:
+      kind: linux
+      image: almalinux/9-base:latest
+
+  links:
+    - endpoints: ["spine1:eth1", "leaf1:eth1"]
+    - endpoints: ["spine1:eth2", "leaf2:eth1"]
+    - endpoints: ["leaf1:eth2", "host1:eth1"]
+    - endpoints: ["leaf2:eth2", "host2:eth1"]
