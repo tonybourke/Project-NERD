@@ -11,4 +11,26 @@ While this system wasn't designed to be a production system, you can of course u
 
 ## Installing Linux
 
-While you can use just about any Linux distribution you like (there're several hundred to choose from), I'm using AlmaLinux here. It's similar to RHEL (and what used to be CentOS Linux) 
+While you can use just about any Linux distribution you like (there're several hundred to choose from), I'm using AlmaLinux here. It's similar to RHEL (and what used to be CentOS Linux, RIP). 
+
+You can use any hypervisor that you like. I've been playing with Proxmox, but any general purpose hypervisor should work (KVM, VMware/ESXi, HyperV, etc.).
+
+* Download the minimal ISO image
+* Install AlmaLinux 9.3 with at least the following:
+* * 4 GB of RAM
+* * 50 GB disk 
+* * As many cores as you can put into it
+
+## Installing Coder
+
+As the regular user, run the following command: `curl -fsSL https://code-server.dev/install.sh | sh`
+
+`touch .
+
+```ini
+bind-addr: 0.0.0.0:443
+auth: password
+password: letmein
+cert: true
+```
+
