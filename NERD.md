@@ -21,9 +21,50 @@ You can use any hypervisor that you like. I've been playing with Proxmox, but an
 * * 50 GB disk 
 * * As many cores as you can put into it
 
+### Update 
+
+Run `sudo dnf -y update` to update all the packages to the current versions. This is a good security step. 
+
+
+
+
 ## Installing Coder
 
 As the regular user, run the following command: `curl -fsSL https://code-server.dev/install.sh | sh`
+
+You'll be asked for the sudo password (just your normal password when you created the account)
+
+```
+
+AlmaLinux 9.3 (Shamrock Pampas Cat)
+Installing v4.22.0 of the amd64 rpm package from GitHub.
+
++ mkdir -p ~/.cache/code-server
++ curl -#fL -o ~/.cache/code-server/code-server-4.22.0-amd64.rpm.incomplete -C - https://github.com/coder/code-server/releases/download/v4.22.0/code-server-4.22.0-amd64.rpm
+######################################################################## 100.0%
++ mv ~/.cache/code-server/code-server-4.22.0-amd64.rpm.incomplete ~/.cache/code-server/code-server-4.22.0-amd64.rpm
++ sudo rpm -U ~/.cache/code-server/code-server-4.22.0-amd64.rpm
+[sudo] password for tony:
+
+rpm package has been installed.
+
+To have systemd start code-server now and restart on boot:
+  sudo systemctl enable --now code-server@$USER
+Or, if you don't want/need a background service you can run:
+  code-server
+
+Deploy code-server for your team with Coder: https://github.com/coder/coder
+
+```
+
+Next, tell systemd to enable and run coder-server. Run the command `sudo systemctl enable --now code-server@$USER`
+
+```
+[tony@nerd1 ~]$ sudo systemctl enable --now code-server@$USER
+Created symlink /etc/systemd/system/default.target.wants/code-server@tony.service → /usr/lib/systemd/system/code-server@.service.
+```
+
+
 
 `touch .
 
