@@ -16,7 +16,8 @@ echo "auth: password" > ~/.config/code-server/config.yaml
 echo "bind-addr: 0.0.0.0:8080" >> ~/.config/code-server/config.yaml
 echo "cert: true" >> ~/.config/code-server/config.yaml
 echo "password: $password" >> ~/.config/code-server/config.yaml
+echo "Now restarting code-server to activate new settings. The config file can be edited at ~/config/code-server/config.yaml"
+sudo systemctl restart code-server@\$USER
 
-# Allow code-server to answer on 443 even though it's running as a user
-#sudo setcap cap_net_bind_service=+ep /usr/lib/code-server/lib/node
+
 
