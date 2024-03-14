@@ -1,6 +1,6 @@
 # This script changes the code-server config file to allow access via 443
 
-if [ -e ~/.config/code-server/config.yaml]
+if [ -e ~/.config/code-server/config.yaml ]
 then 
     echo "Code-server installation detected, proceeding"
 else
