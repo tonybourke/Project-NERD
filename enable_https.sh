@@ -1,4 +1,4 @@
-# This script changes the code-server config file to allow access via 443
+# This script changes the code-server config file to allow access via 8080
 
 if [ -e ~/.config/code-server/config.yaml ]
 then 
