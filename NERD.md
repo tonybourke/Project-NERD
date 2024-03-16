@@ -25,7 +25,23 @@ You can use any hypervisor that you like. I've been playing with Proxmox, but an
 
 Run `sudo dnf -y update` to update all the packages to the current versions. This is a good security step. 
 
+## Install Ansible
 
+To install Ansible, run the commmand `dnf -y install ansible-core`
+
+This should take a minute or so, and when it's complete verify that Ansible is installed with `ansible --version`
+
+```
+ansible [core 2.14.9]
+  config file = /etc/ansible/ansible.cfg
+  configured module search path = ['/home/tony/.ansible/plugins/modules', '/usr/share/ansible/plugins/modules']
+  ansible python module location = /usr/lib/python3.9/site-packages/ansible
+  ansible collection location = /home/tony/.ansible/collections:/usr/share/ansible/collections
+  executable location = /usr/bin/ansible
+  python version = 3.9.18 (main, Jan  4 2024, 00:00:00) [GCC 11.4.1 20230605 (Red Hat 11.4.1-2)] (/usr/bin/python3)
+  jinja version = 3.1.2
+  libyaml = True
+```
 
 
 ## Installing Coder
