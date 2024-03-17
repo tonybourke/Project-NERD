@@ -1,3 +1,0 @@
-bind-addr: 0.0.0.0:443
-cert: true
-password: letmein
