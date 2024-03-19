@@ -19,5 +19,9 @@ echo "password: $password" >> ~/.config/code-server/config.yaml
 echo "Now restarting code-server to activate new settings. The config file can be edited at ~/config/code-server/config.yaml"
 sudo systemctl restart code-server@$USER
 
+echo "Configuring the firewall to allow port 8080"
+sudo firewall-cmd --add-port=8080/tcp --permanent
+sudo systemctl restart firewalld
+
 
 
