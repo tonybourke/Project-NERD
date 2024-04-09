@@ -50,170 +50,6 @@ ansible [core 2.14.9]
 ```
 
 
-## Installing Coder
-
-As the regular user, run the following command: `curl -fsSL https://code-server.dev/install.sh | sh`
-
-You'll be asked for the sudo password (just your normal password when you created the account)
-
-Next, tell systemd to enable and run coder-server. Run the command `sudo systemctl enable --now code-server@$USER`
-
-```
-[tony@nerd1 ~]$ sudo systemctl enable --now code-server@$USER
-Created symlink /etc/systemd/system/default.target.wants/code-server@tony.service → /usr/lib/systemd/system/code-server@.service.
-```
-
-### Enable External Access Through a Self-Signed Certificate
-
-
-After code-server is installed, you will want to enable it to be accessed remotely through HTTPS and a self-signed certificate. 
-
-Run the command `curl -fsSL https://raw.githubusercontent.com/tonybourke/Project-NERD/main/enable_https.sh > enable_https.sh ; sh enable_https.sh`
-
-```
-What password would you like to set for access to code-server?
-[type your password in]
-```
-
-The script will also add 8080 to your Linux firewall. You should be able to open up your code-server by going to https://your.ip:8080
-
-## Install Docker
-
-Containerlab utilizes Docker for containers. I couldn't get Podman to work, so make sure you install actual Docker. 
-
-`sudo yum install -y yum-utils`
-
-`sudo yum install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin`
-
-The following command will enable Docker to autostart when the system is booted. 
-
-`sudo systemctl enable docker`
-
-The following command will start Docker now. 
-
-`sudo systemctl start docker`
-
-
-## Installing a Container (Arista cEOS)
-
-You'll need to obtain a copy of cEOS from Arista.com. Go to Support, then Download Software, and download the latest version of cEOS-lab (4.31.2F as of writing of this guide). You'll need an account to download the container, but it should be free. 
-
-You want the cEOS version, not the cEOS64 version. The cEOS64 works, but it takes up about twice as much RAM in Docker. I'm not aware of any benefit to running the 64-bit version for labs. Eventually Arista is going to move to 64-bit only, but that should give you enough time to get more RAM! 
-
-Upload that file to the Linux system. You can use any scp client to get the file on there, but I like [WinSCP](https://winscp.net/eng/download.php) (and FileZilla is also a good choice).
-
-`sudo docker import cEOS-lab-4.31.2F.tar ceos:4.31.2F`
-
-```
-$ sudo docker image list
-REPOSITORY   TAG       IMAGE ID       CREATED         SIZE
-ceos         4.31.2F   b22dab620e9c   8 seconds ago   2.01GB
-[tony@nerd1 docker_images]$ 
-```
-## Installing Containerlab
-
-`bash -c "$(curl -sL https://get.containerlab.dev)"`
-
-```
-Downloading https://github.com/srl-labs/containerlab/releases/download/v0.52.0/containerlab_0.52.0_linux_amd64.rpm
-Preparing to install containerlab 0.52.0 from package
-  ____ ___  _   _ _____  _    ___ _   _ _____ ____  _       _     
- / ___/ _ \| \ | |_   _|/ \  |_ _| \ | | ____|  _ \| | __ _| |__  
-| |  | | | |  \| | | | / _ \  | ||  \| |  _| | |_) | |/ _` | '_ \ 
-| |__| |_| | |\  | | |/ ___ \ | || |\  | |___|  _ <| | (_| | |_) |
- \____\___/|_| \_| |_/_/   \_\___|_| \_|_____|_| \_\_|\__,_|_.__/ 
-
-    version: 0.52.0
-     commit: de03337a
-       date: 2024-03-05T11:44:25Z
-     source: https://github.com/srl-labs/containerlab
- rel. notes: https://containerlab.dev/rn/0.52/
- ```
-
-## Install Ansible
-
-Run the command `sudo yum -y install ansible-core`
-
-```
-sudo dnf -y install ansible-core
-Last metadata expiration check: 1:08:30 ago on Fri Mar 15 19:01:40 2024.
-Dependencies resolved.
-==================================================================================================================================================================================================
- Package                                               Architecture                            Version                                           Repository                                  Size
-==================================================================================================================================================================================================
-Installing:
- ansible-core                                          x86_64                                  1:2.14.9-1.el9                                    appstream                                  2.2 M
-Installing dependencies:
- git-core                                              x86_64                                  2.39.3-1.el9_2                                    appstream                                  4.2 M
- python3-cffi                                          x86_64                                  1.14.5-5.el9                                      baseos                                     241 k
- python3-cryptography                                  x86_64                                  36.0.1-4.el9                                      baseos                                     1.1 M
- python3-packaging                                     noarch                                  20.9-5.el9                                        appstream                                   69 k
- python3-ply                                           noarch                                  3.11-14.el9                                       baseos                                     103 k
- python3-pycparser                                     noarch                                  2.20-6.el9                                        baseos                                     124 k
- python3-pyparsing                                     noarch                                  2.4.7-9.el9                                       baseos                                     149 k
- python3-pyyaml                                        x86_64                                  5.4.1-6.el9                                       baseos                                     190 k
- python3-resolvelib                                    noarch                                  0.5.4-5.el9                                       appstream                                   29 k
- sshpass                                               x86_64                                  1.09-4.el9                                        appstream                                   27 k
-
-Transaction Summary
-==================================================================================================================================================================================================
-Install  11 Packages
-
-Total download size: 8.5 M
-Installed size: 38 M
-Downloading Packages:
-(1/11): python3-packaging-20.9-5.el9.noarch.rpm                                                                                                                    39 kB/s |  69 kB     00:01    
-(2/11): python3-resolvelib-0.5.4-5.el9.noarch.rpm                                                                                                                 686 kB/s |  29 kB     00:00    
-(3/11): sshpass-1.09-4.el9.x86_64.rpm                                                                                                                             561 kB/s |  27 kB     00:00    
-(4/11): git-core-2.39.3-1.el9_2.x86_64.rpm                                                                                                                        2.3 MB/s | 4.2 MB     00:01    
-(5/11): ansible-core-2.14.9-1.el9.x86_64.rpm                                                                                                                      1.2 MB/s | 2.2 MB     00:01    
-(6/11): python3-cffi-1.14.5-5.el9.x86_64.rpm                                                                                                                      3.2 MB/s | 241 kB     00:00    
-(7/11): python3-ply-3.11-14.el9.noarch.rpm                                                                                                                        3.0 MB/s | 103 kB     00:00    
-(8/11): python3-pycparser-2.20-6.el9.noarch.rpm                                                                                                                   4.0 MB/s | 124 kB     00:00    
-(9/11): python3-pyparsing-2.4.7-9.el9.noarch.rpm                                                                                                                  4.8 MB/s | 149 kB     00:00    
-(10/11): python3-pyyaml-5.4.1-6.el9.x86_64.rpm                                                                                                                    5.3 MB/s | 190 kB     00:00    
-(11/11): python3-cryptography-36.0.1-4.el9.x86_64.rpm                                                                                                             8.9 MB/s | 1.1 MB     00:00    
---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-Total                                                                                                                                                             3.0 MB/s | 8.5 MB     00:02     
-Running transaction check
-Transaction check succeeded.
-Running transaction test
-Transaction test succeeded.
-Running transaction
-  Preparing        :                                                                                                                                                                          1/1 
-  Installing       : python3-pyyaml-5.4.1-6.el9.x86_64                                                                                                                                       1/11 
-  Installing       : python3-pyparsing-2.4.7-9.el9.noarch                                                                                                                                    2/11 
-  Installing       : python3-packaging-20.9-5.el9.noarch                                                                                                                                     3/11 
-  Installing       : python3-ply-3.11-14.el9.noarch                                                                                                                                          4/11 
-  Installing       : python3-pycparser-2.20-6.el9.noarch                                                                                                                                     5/11 
-  Installing       : python3-cffi-1.14.5-5.el9.x86_64                                                                                                                                        6/11 
-  Installing       : python3-cryptography-36.0.1-4.el9.x86_64                                                                                                                                7/11 
-  Installing       : sshpass-1.09-4.el9.x86_64                                                                                                                                               8/11 
-  Installing       : python3-resolvelib-0.5.4-5.el9.noarch                                                                                                                                   9/11 
-  Installing       : git-core-2.39.3-1.el9_2.x86_64                                                                                                                                         10/11 
-  Installing       : ansible-core-1:2.14.9-1.el9.x86_64                                                                                                                                     11/11 
-  Running scriptlet: ansible-core-1:2.14.9-1.el9.x86_64                                                                                                                                     11/11 
-  Verifying        : ansible-core-1:2.14.9-1.el9.x86_64                                                                                                                                      1/11 
-  Verifying        : git-core-2.39.3-1.el9_2.x86_64                                                                                                                                          2/11 
-  Verifying        : python3-packaging-20.9-5.el9.noarch                                                                                                                                     3/11 
-  Verifying        : python3-resolvelib-0.5.4-5.el9.noarch                                                                                                                                   4/11 
-  Verifying        : sshpass-1.09-4.el9.x86_64                                                                                                                                               5/11 
-  Verifying        : python3-cffi-1.14.5-5.el9.x86_64                                                                                                                                        6/11 
-  Verifying        : python3-cryptography-36.0.1-4.el9.x86_64                                                                                                                                7/11 
-  Verifying        : python3-ply-3.11-14.el9.noarch                                                                                                                                          8/11 
-  Verifying        : python3-pycparser-2.20-6.el9.noarch                                                                                                                                     9/11 
-  Verifying        : python3-pyparsing-2.4.7-9.el9.noarch                                                                                                                                   10/11 
-  Verifying        : python3-pyyaml-5.4.1-6.el9.x86_64                                                                                                                                      11/11 
-
-Installed:
-  ansible-core-1:2.14.9-1.el9.x86_64  git-core-2.39.3-1.el9_2.x86_64       python3-cffi-1.14.5-5.el9.x86_64      python3-cryptography-36.0.1-4.el9.x86_64  python3-packaging-20.9-5.el9.noarch   
-  python3-ply-3.11-14.el9.noarch      python3-pycparser-2.20-6.el9.noarch  python3-pyparsing-2.4.7-9.el9.noarch  python3-pyyaml-5.4.1-6.el9.x86_64         python3-resolvelib-0.5.4-5.el9.noarch 
-  sshpass-1.09-4.el9.x86_64          
-
-Complete!
-```
-
-Then run `ansible --version` to validate the installation. 
 
 Install ansible-lint (used by the Ansible extension for VS Code): `pip3 install ansible-lint`
 
@@ -292,6 +128,88 @@ Installing collected packages: packaging, mdurl, tomli, subprocess-tee, ruamel.y
   prefix = None
 Successfully installed ansible-compat-4.1.11 ansible-lint-6.22.2 black-24.3.0 bracex-2.4 click-8.1.7 filelock-3.13.1 markdown-it-py-3.0.0 mdurl-0.1.2 mypy-extensions-1.0.0 packaging-24.0 pathspec-0.12.1 platformdirs-4.2.0 pygments-2.17.2 rich-13.7.1 ruamel.yaml-0.18.6 ruamel.yaml.clib-0.2.8 subprocess-tee-0.4.1 tomli-2.0.1 wcmatch-8.5.1 yamllint-1.35.1
 ```
+
+## Installing Coder
+
+As the regular user, run the following command: `curl -fsSL https://code-server.dev/install.sh | sh`
+
+You'll be asked for the sudo password (just your normal password when you created the account)
+
+Next, tell systemd to enable and run coder-server. Run the command `sudo systemctl enable --now code-server@$USER`
+
+```
+[tony@nerd1 ~]$ sudo systemctl enable --now code-server@$USER
+Created symlink /etc/systemd/system/default.target.wants/code-server@tony.service → /usr/lib/systemd/system/code-server@.service.
+```
+
+### Enable External Access Through a Self-Signed Certificate
+
+
+After code-server is installed, you will want to enable it to be accessed remotely through HTTPS and a self-signed certificate. 
+
+Run the command `curl -fsSL https://raw.githubusercontent.com/tonybourke/Project-NERD/main/containerlab/enable_https.sh > enable_https.sh ; sh enable_https.sh`
+
+```
+What password would you like to set for access to code-server?
+[type your password in]
+```
+
+The script will also add 8080 to your Linux firewall. You should be able to open up your code-server by going to https://your.ip:8080
+
+## Install Docker
+
+Containerlab utilizes Docker for containers. I couldn't get Podman to work, so make sure you install actual Docker. 
+
+`sudo yum install -y yum-utils`
+
+`sudo yum install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin`
+
+The following command will enable Docker to autostart when the system is booted. 
+
+`sudo systemctl enable docker`
+
+The following command will start Docker now. 
+
+`sudo systemctl start docker`
+
+
+## Installing a Container (Arista cEOS)
+
+You'll need to obtain a copy of cEOS from Arista.com. Go to Support, then Download Software, and download the latest version of cEOS-lab (4.31.2F as of writing of this guide). You'll need an account to download the container, but it should be free. 
+
+You want the cEOS version, not the cEOS64 version. The cEOS64 works, but it takes up about twice as much RAM in Docker. I'm not aware of any benefit to running the 64-bit version for labs. Eventually Arista is going to move to 64-bit only, but that should give you enough time to get more RAM! 
+
+Upload that file to the Linux system. You can use any scp client to get the file on there, but I like [WinSCP](https://winscp.net/eng/download.php) (and FileZilla is also a good choice).
+
+`sudo docker import cEOS-lab-4.31.2F.tar ceos:4.31.2F`
+
+```
+$ sudo docker image list
+REPOSITORY   TAG       IMAGE ID       CREATED         SIZE
+ceos         4.31.2F   b22dab620e9c   8 seconds ago   2.01GB
+[tony@nerd1 docker_images]$ 
+```
+## Installing Containerlab
+
+`bash -c "$(curl -sL https://get.containerlab.dev)"`
+
+```
+Downloading https://github.com/srl-labs/containerlab/releases/download/v0.52.0/containerlab_0.52.0_linux_amd64.rpm
+Preparing to install containerlab 0.52.0 from package
+  ____ ___  _   _ _____  _    ___ _   _ _____ ____  _       _     
+ / ___/ _ \| \ | |_   _|/ \  |_ _| \ | | ____|  _ \| | __ _| |__  
+| |  | | | |  \| | | | / _ \  | ||  \| |  _| | |_) | |/ _` | '_ \ 
+| |__| |_| | |\  | | |/ ___ \ | || |\  | |___|  _ <| | (_| | |_) |
+ \____\___/|_| \_| |_/_/   \_\___|_| \_|_____|_| \_\_|\__,_|_.__/ 
+
+    version: 0.52.0
+     commit: de03337a
+       date: 2024-03-05T11:44:25Z
+     source: https://github.com/srl-labs/containerlab
+ rel. notes: https://containerlab.dev/rn/0.52/
+ ```
+
+
 
 ### Install Arista Ansible Collections
 
