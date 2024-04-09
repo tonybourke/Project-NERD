@@ -217,7 +217,7 @@ Preparing to install containerlab 0.52.0 from package
 
 This will install Arista AVD, as well as the arista.eos and arista.cvp collections.
 
-From the https://avd.sh website, run the following command: 
+From the https://avd.arista.com website, run the following command: 
 
 `export ARISTA_AVD_DIR=$(ansible-galaxy collection list arista.avd --format yaml | head -1 | cut -d: -f1)
 pip3 install -r ${ARISTA_AVD_DIR}/arista/avd/requirements.txt`
