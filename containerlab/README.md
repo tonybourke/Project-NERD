@@ -1,13 +1,17 @@
-# The Automation Toolkit
+# NERD Box: Network Automation with Ansible and containerlab
 
-This toolkit should provide an environment to explore network automation. One of the challenges for a lot of networking people is setting up such an environment. There's lots of instructions around, but I've yet to see a single set of instructions for building all of these pieces together. I think that creates a lot of friction for the many networking people who aren't as used to tools of the system administrator trade (Linux, Linux CLI, etc.)
+This toolkit should provide an environment to explore network automation with containerlab, VS Code (as a web app), and Ansible (and/or Python).  One of the challenges for a lot of networking people is setting up such an environment. There's lots of instructions around, but I've yet to see a single set of instructions for building all of these pieces together. I think that creates a lot of friction for the many networking people who aren't as used to tools of the system administrator trade (Linux, Linux CLI, etc.)
+
+This toolkit includes the following: 
 
 * Linux VM (AlmaLinux in this case)
 * Coder (VS Code running as a web application)
 * Containerlab (with Arista cEOS-Lab)
-* Ansible
+* Ansible (free, open source version)
 
-While this system wasn't designed to be a production system, you can of course use it as a guide for making a prodution automation platform. 
+This is either all free (Ansible, Linux VM) or free in lab form (Arista cEOS-Lab). Nothing requires a paid license. 
+
+While this system wasn't designed to be a production system, you can of course use it as a starting point for making a prodution automation platform. 
 
 ## Installing Linux
 
@@ -15,13 +19,13 @@ While you can use just about any Linux distribution you like (there're several h
 
 You can use any hypervisor that you like. I've been playing with Proxmox, but any general purpose hypervisor should work (KVM, VMware/ESXi, HyperV, etc.).
 
-* Download the minimal ISO image (https://almalinux.org/get-almalinux/)
+* Download the **minimal** ISO image (https://almalinux.org/get-almalinux/)
 * Install AlmaLinux 9.3 with *at least* the following:
 * * 20 GB of RAM (any less and you might run into problems, like the CPU spiking to 100%)
 * * 50 GB disk 
 * * At least 8 vCPUs would be best, though it could be less
 * * Set an IP address if you wan't want to use DHCP
-* * Set a 
+* * Configure a user account and make sure to enable "
 
 ### Update 
 
@@ -51,28 +55,6 @@ ansible [core 2.14.9]
 As the regular user, run the following command: `curl -fsSL https://code-server.dev/install.sh | sh`
 
 You'll be asked for the sudo password (just your normal password when you created the account)
-
-```
-AlmaLinux 9.3 (Shamrock Pampas Cat)
-Installing v4.22.0 of the amd64 rpm package from GitHub.
-
-+ mkdir -p ~/.cache/code-server
-+ curl -#fL -o ~/.cache/code-server/code-server-4.22.0-amd64.rpm.incomplete -C - https://github.com/coder/code-server/releases/download/v4.22.0/code-server-4.22.0-amd64.rpm
-######################################################################## 100.0%
-+ mv ~/.cache/code-server/code-server-4.22.0-amd64.rpm.incomplete ~/.cache/code-server/code-server-4.22.0-amd64.rpm
-+ sudo rpm -U ~/.cache/code-server/code-server-4.22.0-amd64.rpm
-[sudo] password for tony:
-
-rpm package has been installed.
-
-To have systemd start code-server now and restart on boot:
-  sudo systemctl enable --now code-server@$USER
-Or, if you don't want/need a background service you can run:
-  code-server
-
-Deploy code-server for your team with Coder: https://github.com/coder/coder
-
-```
 
 Next, tell systemd to enable and run coder-server. Run the command `sudo systemctl enable --now code-server@$USER`
 
