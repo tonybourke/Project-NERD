@@ -6,6 +6,7 @@ What is project NERD? It's a collection of tutorials and accompanying artifacts 
 
 The instructions are geared towards home labs, but they can be used as the basis for production builds. 
 
+These toolkits should provide an environment to explore network automation with containerlab, VS Code (as a web app), and Ansible (and/or Python).  One of the challenges for a lot of networking people is setting up such an environment. There's lots of instructions around, but I've yet to see a single set of instructions for building all of these pieces together. I think that creates a lot of friction for the many networking people who aren't as used to tools of the system administrator trade (Linux, Linux CLI, etc.)
 
 ## The Autobox
 
