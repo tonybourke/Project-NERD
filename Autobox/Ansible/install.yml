@@ -2,21 +2,26 @@
 - name: Install Autobox components
   hosts: localhost
   tasks:
-    - name: Add Docker repo
-      ansible.builtin.yum_repository:
-          name: Docker
-          description: Docker CE
-          baseurl: https://download.docker.com/linux/centos/
-          file: docker-ce.repo
-
+    - name: Add Docker-CE stable repo
+      yum_repository:
+        name: docker-ce-stable
+        description: Docker CE Stable Repo
+        baseurl: https://download.docker.com/linux/centos/9/$basearch/stable
+        gpgkey: https://download.docker.com/linux/centos/gpg
+        gpgcheck: yes
     - name: Install necessary components via DNF (package manager)
-      ansible.builtin.dnf:
+      ansible.builtin.yum:
         name:
           # - yum-utils
-          # - vim
-          # - nano
+          - vim
+          - nano
           - docker-ce
-    # - name: Install necessary items via pip3
-    #   ansible.builtin.pip:
-    #     name: ansible-lint
-    
+          - docker-ce-cli
+          - containerd.io
+          - docker-buildx-plugin
+          - docker-compose-plugin
+          - python-pip
+    - name: Install necessary items via pip3
+      ansible.builtin.pip:
+        name:
+          - ansible-lint
