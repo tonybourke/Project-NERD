@@ -37,4 +37,4 @@
           - cryptography
           - anta
           - aristaproto
-          - lib
+          - ansible-pylibssh
