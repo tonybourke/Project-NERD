@@ -25,3 +25,16 @@
       ansible.builtin.pip:
         name:
           - ansible-lint
+          - netaddr
+          - Jinja2
+          - treelib
+          - cvprac
+          - jsonschema
+          - referencing
+          - requests
+          - PyYAML
+          - deepmerge
+          - cryptography
+          - anta
+          - aristaproto
+          - lib
