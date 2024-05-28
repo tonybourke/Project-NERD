@@ -3,10 +3,10 @@
   hosts: localhost
   tasks:
     - name: Add Docker repo
-      ansible.builtin.get_url:
-        url: https://download.docker.com/linux/centos/docker-ce.repo
-        dest: /etc/yum.repos.d.docker-ce.repo
-
+      ansible.builtin.yum_repository:
+          name: Docker
+          description: Docker CE
+          baseurl: https://download.docker.com/linux/centos/docker-ce.repo
     - name: Install necessary components via DNF (package manager)
       ansible.builtin.dnf:
         name:
