@@ -13,7 +13,7 @@
           # - yum-utils
           # - vim
           # - nano
-          - docker
+          - docker-ce
     # - name: Install necessary items via pip3
     #   ansible.builtin.pip:
     #     name: ansible-lint
