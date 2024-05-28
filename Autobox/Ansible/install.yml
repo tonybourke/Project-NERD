@@ -1,0 +1,20 @@
+---
+- name: Install Autobox components
+  hosts: localhost
+  tasks:
+    - name: Add Docker repo
+      ansible.builtin.get_url:
+        url: https://download.docker.com/linux/centos/docker-ce.repo
+        dest: /etc/yum.repos.d.docker-ce.repo
+
+    - name: Install necessary components via DNF (package manager)
+      ansible.builtin.dnf:
+        name:
+          # - yum-utils
+          # - vim
+          # - nano
+          - docker
+    # - name: Install necessary items via pip3
+    #   ansible.builtin.pip:
+    #     name: ansible-lint
+    
