@@ -6,7 +6,9 @@
       ansible.builtin.yum_repository:
           name: Docker
           description: Docker CE
-          baseurl: https://download.docker.com/linux/centos/docker-ce.repo
+          baseurl: https://download.docker.com/linux/centos/
+          file: docker-ce.repo
+
     - name: Install necessary components via DNF (package manager)
       ansible.builtin.dnf:
         name:
