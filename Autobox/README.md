@@ -20,7 +20,7 @@ While you can use just about any Linux distribution you like (there're several h
 You can use any hypervisor that you like. I've been playing with Proxmox, but any general purpose hypervisor should work (KVM, VMware/ESXi, HyperV, etc.).
 
 * Download the **minimal** ISO image (https://almalinux.org/get-almalinux/)
-* Install AlmaLinux 9.3 with *at least* the following:
+* Install AlmaLinux 9.4 with *at least* the following:
 * * 20 GB of RAM (any less and you might run into problems, like the CPU spiking to 100%)
 * * 50 GB disk 
 * * At least 8 vCPUs would be best, though it could be less
