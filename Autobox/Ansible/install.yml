@@ -43,6 +43,11 @@
       ansible.builtin.pip:
         name: "{{ item }}"
       loop: "{{ pip_list }}"
-    - name: Install coder
-      ansible.builtin.command:
-        cmd: "curl -L https://coder.com/install.sh | sh"
+    # - name: Install coder
+    #   ansible.builtin.command:
+    #     cmd: "curl -L https://coder.com/install.sh | sh"
+    - name: Get Coder binary
+      ansible.builtin.get_url:
+        url: https://github.com/coder/coder/releases/download/v2.10.3/coder_2.10.3_linux_amd64.rpm
+        dest: /tmp/coder_2.10.3_linux_amd64.rpm
+        
