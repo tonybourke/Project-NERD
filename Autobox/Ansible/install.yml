@@ -2,7 +2,17 @@
 - name: Install Autobox components
   hosts: localhost
   vars:
-    pip_vars:
+    yum_list:
+      - yum-utils
+      - vim
+      - nano
+      - docker-ce
+      - docker-ce-cli
+      - containerd.io
+      - docker-buildx-plugin
+      - docker-compose-plugin
+      - python-pip
+    pip_list:
       - ansible-lint
       - netaddr
       - Jinja2
@@ -17,18 +27,8 @@
       - anta
       - aristaproto
       - ansible-pylibssh
-    yum_vars:
-          - yum-utils
-          - vim
-          - nano
-          - docker-ce
-          - docker-ce-cli
-          - containerd.io
-          - docker-buildx-plugin
-          - docker-compose-plugin
-          - python-pip
   tasks:
-    - name: Add Docker-CE stable repo
+    - name: Add Docker-CE (Communitiy Edition) stable repo
       yum_repository:
         name: docker-ce-stable
         description: Docker CE Stable Repo
@@ -38,8 +38,8 @@
     - name: Install necessary components via yum (package manager)
       ansible.builtin.yum:
         name: "{{ item }}"
-      loop: "{{ yum_vars }}"
+      loop: "{{ yum_list }}"
     - name: Installing Python modules via pip
       ansible.builtin.pip:
         name: "{{ item }}"
-      loop: "{{ pip_vars }}"
+      loop: "{{ pip_list }}"
