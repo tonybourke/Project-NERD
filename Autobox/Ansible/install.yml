@@ -42,5 +42,5 @@
       loop: "{{ yum_vars }}"
     - name: Installing { item }
       ansible.builtin.pip:
-        name: "{{ item }}"
-      loop: {{ pip_vars }}
+        name:
+          - ansible-lint
