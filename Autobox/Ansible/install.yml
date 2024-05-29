@@ -43,3 +43,6 @@
       ansible.builtin.pip:
         name: "{{ item }}"
       loop: "{{ pip_list }}"
+    - name: Install coder
+      ansible.builtin.command:
+        cmd: "curl -L https://coder.com/install.sh | sh"
