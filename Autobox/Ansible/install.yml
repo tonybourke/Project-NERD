@@ -43,4 +43,4 @@
     - name: Installing Python modules via pip
       ansible.builtin.pip:
         name: "{{ item }}"
-      loop: "{{ yum_vars }}"
+      loop: "{{ pip_vars }}"
