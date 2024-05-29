@@ -1,18 +1,24 @@
 ---
 - name: Install Autobox components
   hosts: localhost
-  tasks:
-    - name: Add Docker-CE stable repo
-      yum_repository:
-        name: docker-ce-stable
-        description: Docker CE Stable Repo
-        baseurl: https://download.docker.com/linux/centos/9/$basearch/stable
-        gpgkey: https://download.docker.com/linux/centos/gpg
-        gpgcheck: yes
-    - name: Install necessary components via DNF (package manager)
-      ansible.builtin.yum:
-        name:
-          # - yum-utils
+  vars:
+    pip_vars:
+      - ansible-lint
+      - netaddr
+      - Jinja2
+      - treelib
+      - cvprac
+      - jsonschema
+      - referencing
+      - requests
+      - PyYAML
+      - deepmerge
+      - cryptography
+      - anta
+      - aristaproto
+      - ansible-pylibssh
+    yum_vars:
+          - yum-utils
           - vim
           - nano
           - docker-ce
@@ -21,7 +27,20 @@
           - docker-buildx-plugin
           - docker-compose-plugin
           - python-pip
-    - name: Install necessary items via pip3
+
+  tasks:
+    - name: Add Docker-CE stable repo
+      yum_repository:
+        name: docker-ce-stable
+        description: Docker CE Stable Repo
+        baseurl: https://download.docker.com/linux/centos/9/$basearch/stable
+        gpgkey: https://download.docker.com/linux/centos/gpg
+        gpgcheck: yes
+    - name: Install necessary components via yum (package manager)
+      ansible.builtin.yum:
+        name: "{{ item }}"
+      loop: "{{ yum_vars }}"
+    - name: Installing { item }
       ansible.builtin.pip:
-        name:
-          - ansible-lint
+        name: "{{ item }}"
+      loop: {{ pip_vars }}
