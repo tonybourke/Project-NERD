@@ -28,6 +28,9 @@
       - aristaproto
       - ansible-pylibssh
   tasks:
+    - name: Assert that this is running as root
+      ansible.builtin.assert:
+        that: "ansible_user_id == 'root'"
     - name: Add Docker-CE (Communitiy Edition) stable repo
       yum_repository:
         name: docker-ce-stable
@@ -46,8 +49,9 @@
     # - name: Install coder
     #   ansible.builtin.command:
     #     cmd: "curl -L https://coder.com/install.sh | sh"
-    - name: Get Coder binary
-      ansible.builtin.get_url:
-        url: https://github.com/coder/coder/releases/download/v2.10.3/coder_2.10.3_linux_amd64.rpm
-        dest: /tmp/coder_2.10.3_linux_amd64.rpm
-        
+    # - name: Install code-server
+    #  ansible.builtin.command:
+    #    cmd: "curl -fsSL https://code-server.dev/install.sh | sh"
+    - name: Display user 
+      ansible.builtin.debug:
+        msg: "{{ ansible_user_id }}"

@@ -1,0 +1,51 @@
+---
+- name: Install Autobox components
+  hosts: localhost
+  vars:
+    yum_list:
+      - yum-utils
+      - vim
+      - nano
+      - docker-ce
+      - docker-ce-cli
+      - containerd.io
+      - docker-buildx-plugin
+      - docker-compose-plugin
+      - python-pip
+    pip_list:
+      - ansible-lint
+      - netaddr
+      - Jinja2
+      - treelib
+      - cvprac
+      - jsonschema
+      - referencing
+      - requests
+      - PyYAML
+      - deepmerge
+      - cryptography
+      - anta
+      - aristaproto
+      - ansible-pylibssh
+  tasks:
+    - name: Add Docker-CE (Communitiy Edition) stable repo
+      yum_repository:
+        name: docker-ce-stable
+        description: Docker CE Stable Repo
+        baseurl: https://download.docker.com/linux/centos/9/$basearch/stable
+        gpgkey: https://download.docker.com/linux/centos/gpg
+        gpgcheck: yes
+    - name: Install necessary components via yum (package manager)
+      ansible.builtin.yum:
+        name: "{{ item }}"
+      loop: "{{ yum_list }}"
+    - name: Installing Python modules via pip
+      ansible.builtin.pip:
+        name: "{{ item }}"
+      loop: "{{ pip_list }}"
+    # - name: Install coder
+    #   ansible.builtin.command:
+    #     cmd: "curl -L https://coder.com/install.sh | sh"
+    - name: Install code-server
+      ansible.builtin.command:
+        cmd: "curl -fsSL https://code-server.dev/install.sh | sh"
