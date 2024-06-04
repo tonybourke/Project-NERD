@@ -4,7 +4,7 @@ if [ -e ~/.config/code-server/config.yaml ]
 then 
     echo "Code-server installation detected, proceeding"
 else
-    echo "config.yaml file not found, please install code-server"
+    echo "config.yaml file not found, please install and enable code-server"
     exit
 fi
 
