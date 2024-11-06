@@ -1,6 +1,6 @@
 # The NERD Project
 
-The <ins>N</ins>etwork _E_ngineering _R_esource for _D_evelopment. Project NERD. 
+The <ins>N</ins>etwork <ins>E</ins>ngineering <ins>R</ins>esource for <ins>D</ins>evelopment. Project NERD. 
 
 What is project NERD? It's a collection of tutorials and accompanying artifacts (files, playbooks, scripts, etc.) to build certain types of VMs and containers that aid in network automation, specifically labing of network automation. 
 
