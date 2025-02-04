@@ -10,13 +10,12 @@ These toolkits should provide an environment to explore network automation with 
 
 ## The Autobox
 
-The introductory NERD Box is a VM that has VS Code (running on-box as a webapp), containerlab, and Ansible. It's capable of running a Leaf/Spine EVPN/VXLAN network in at least two different NOSes (network operating systems): Arista cEOS and Nokia SR Linux. 
+The introductory NERD Box is a base VM that has VS Code (running on-box as a webapp), Ansible, and a more updated version of Python. From this type of box you can run things like Docker, containerlab, Grafana, InfluxDB, etc. The rest of the boxes will use this box as the starting point. 
 
 Using the instruction you'll have a VM with the following: 
 
 * AlmaLinux 9
-* Containerlab
-* * A leaf-spine topology for cEOS (You'll need to upload an Arista cEOS container file)
+* Python 3.11
 * Code-server (VS Code running as a web application)
 * Ansible for automating the environment
 
