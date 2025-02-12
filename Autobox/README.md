@@ -92,9 +92,14 @@ The script will also add 8080 to your Linux firewall. You should be able to open
 
 ## Instal Extra Repos (Useful for Network Automation)
 
+The Elrepo project has a more packages that aren't part of the mainline package repos, but are useful for various projects (including network automation). 
+
 <pre>
 dnf config-manager --set-enabled crb
 </pre>
 
-Then
+Then install the elrepo files:
+
+<pre>dnf install elrepo-release
+</pre>
 
