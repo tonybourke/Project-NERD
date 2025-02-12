@@ -81,7 +81,10 @@ Created symlink /etc/systemd/system/default.target.wants/code-server@tony.servic
 
 After code-server is installed, you will want to enable it to be accessed remotely through HTTPS and a self-signed certificate. 
 
-Run the command `curl -fsSL [https://raw.githubusercontent.com/tonybourke/Project-NERD/refs/heads/main/Autobox/enable_https.sh]https://raw.githubusercontent.com/tonybourke/Project-NERD/refs/heads/main/Autobox/enable_https.sh) > enable_https.sh ; sh enable_https.sh`
+Run the following command: 
+<pre>
+curl -fsSL [https://raw.githubusercontent.com/tonybourke/Project-NERD/refs/heads/main/Autobox/enable_https.sh](https://raw.githubusercontent.com/tonybourke/Project-NERD/refs/heads/main/Autobox/enable_https.sh) > enable_https.sh ; sh enable_https.sh
+  </pre>
 
 ```
 What password would you like to set for access to code-server?
