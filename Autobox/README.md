@@ -45,7 +45,7 @@ Run `sudo dnf -y update`. This is a good security step. It may take a few minute
 ## Install Python pip (Python Package Manager)
 
 <pre>
-  dnf -y install python3-pip
+  sudo dnf -y install python3-pip
 </pre>
 
 ## Install Ansible
