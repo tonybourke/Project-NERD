@@ -43,25 +43,26 @@ When the system is installed and booted, log in with your user account and updat
 
 Run `sudo dnf -y update`. This is a good security step. It may take a few minutes depending on your network connection. Once this process is complete, reboot the system as it may have updated the kernel. 
 
+## Install Python pip (Python Package Manager)
+
+<pre>
+  dnf -y install python3-pip
+</pre>
+
 ## Install Ansible
 
-To install Ansible, run the commmand `sudo dnf -y install ansible-core`
+To install Ansible, use pip (it installa a more recent version)
 
-This should take a minute or so, and when it's complete verify that Ansible is installed with `ansible --version`
+<pre>
+  pip3 install ansible-core
+</pre>
 
-```
-ansible [core 2.14.9]
-  config file = /etc/ansible/ansible.cfg
-  configured module search path = ['/home/tony/.ansible/plugins/modules', '/usr/share/ansible/plugins/modules']
-  ansible python module location = /usr/lib/python3.9/site-packages/ansible
-  ansible collection location = /home/tony/.ansible/collections:/usr/share/ansible/collections
-  executable location = /usr/bin/ansible
-  python version = 3.9.18 (main, Jan  4 2024, 00:00:00) [GCC 11.4.1 20230605 (Red Hat 11.4.1-2)] (/usr/bin/python3)
-  jinja version = 3.1.2
-  libyaml = True
-```
-Install ansible-lint (used by the Ansible extension for VS Code): `pip3 install ansible-lint`
 
+Install ansible-lint (used by the Ansible extension for VS Code): 
+
+<pre>
+  pip3 install ansible-lint`
+</pre>
 
 ## Installing Coder
 
@@ -78,7 +79,6 @@ Created symlink /etc/systemd/system/default.target.wants/code-server@tony.servic
 
 ### Enable External Access Through a Self-Signed Certificate
 
-
 After code-server is installed, you will want to enable it to be accessed remotely through HTTPS and a self-signed certificate. 
 
 Run the command `curl -fsSL [https://raw.githubusercontent.com/tonybourke/Project-NERD/refs/heads/main/Autobox/enable_https.sh]https://raw.githubusercontent.com/tonybourke/Project-NERD/refs/heads/main/Autobox/enable_https.sh) > enable_https.sh ; sh enable_https.sh`
@@ -90,5 +90,11 @@ What password would you like to set for access to code-server?
 
 The script will also add 8080 to your Linux firewall. You should be able to open up your code-server by going to https://your.ip:8080
 
+## Instal Extra Repos (Useful for Network Automation)
 
+<pre>
+dnf config-manager --set-enabled crb
+</pre>
+
+Then
 
