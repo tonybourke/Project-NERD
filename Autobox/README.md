@@ -7,7 +7,6 @@ This toolkit includes the following:
 * Linux VM (AlmaLinux in this case)
 * Coder (VS Code running as a web application)
 * Ansible (free, open source version)
-* Updated version of Python (3.11)
 
 This will be the basis that other components will be installed upon (such as containerlab, InfluxDB, etc.).
 
