@@ -80,9 +80,9 @@ Created symlink /etc/systemd/system/default.target.wants/code-server@tony.servic
 
 After code-server is installed, you will want to enable it to be accessed remotely through HTTPS and a self-signed certificate. 
 
-Run the following command: 
+Run the following command for Alma (other operating systems might be added)
 <pre>
-curl -fsSL https://raw.githubusercontent.com/tonybourke/Project-NERD/refs/heads/main/Autobox/enable_https.sh > enable_https.sh ; sh enable_https.sh
+curl -fsSL https://raw.githubusercontent.com/tonybourke/Project-NERD/refs/heads/main/Autobox/enable_alma_https.sh > enable_alma_https.sh ; sh enable_https.sh
   </pre>
 
 ```
