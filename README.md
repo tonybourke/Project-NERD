@@ -14,8 +14,8 @@ The introductory NERD Box is a base VM that has VS Code (running on-box as a web
 
 Using the instruction you'll have a VM with the following: 
 
-* AlmaLinux 9
-* Python 3.11
+* AlmaLinux 9.5
+* Python 3.9
 * Code-server (VS Code running as a web application)
 * Ansible for automating the environment
 
