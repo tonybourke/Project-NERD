@@ -82,7 +82,7 @@ After code-server is installed, you will want to enable it to be accessed remote
 
 Run the following command for Alma (other operating systems might be added)
 <pre>
-curl -fsSL https://raw.githubusercontent.com/tonybourke/Project-NERD/refs/heads/main/Autobox/enable_alma_https.sh > enable_alma_https.sh ; sh enable_https.sh
+curl -fsSL https://raw.githubusercontent.com/tonybourke/Project-NERD/refs/heads/main/Autobox/enable_alma_https.sh > enable_alma_https.sh ; sh enable_alma_https.sh
   </pre>
 
 ```
