@@ -19,4 +19,4 @@ Using the instruction you'll have a VM with the following:
 * Code-server (VS Code running as a web application)
 * Ansible for automating the environment
 
-[NERD Box: Network Automation Base Sytem] (Autobox)
+[NERD Box: Network Automation Base Sytem](Autobox)
