@@ -10,7 +10,7 @@ These toolkits should provide an environment to explore network automation with 
 
 ## The Autobox
 
-The introductory NERD Box is a base VM that has VS Code (running on-box as a webapp), Ansible, and a more updated version of Python. From this type of box you can run things like Docker, containerlab, Grafana, InfluxDB, etc. The rest of the boxes will use this box as the starting point. 
+The introductory NERD Box is a base VM that has VS Code (running on-box as a webapp) and Ansible. From this type of box you can run things like Docker, containerlab, Grafana, InfluxDB, etc. The rest of the boxes will use this box as the starting point. 
 
 Using the instruction you'll have a VM with the following: 
 
