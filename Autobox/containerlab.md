@@ -43,7 +43,7 @@ The following command will start Docker now.
 
 ## Installing a Container (Arista cEOS)
 
-You'll need to obtain a copy of cEOS from Arista.com. Go to Support, then Download Software, and download the latest version of cEOS-lab (4.33.2F as of writing of this guide). You'll need an account to download the container, but it should be free. 
+You'll need to obtain a copy of cEOS from Arista.com. Go to (https://arista.com)[arista.com] and then go to Support, then Download Software, and download the latest version of cEOS-lab (4.33.2F as of writing of this guide). You'll need an account to download the container, but it should be free. 
 
 You want the cEOS version, not the cEOS64 version. The cEOS64 works, but it takes up about twice as much RAM in Docker. I'm not aware of any benefit to running the 64-bit version for labs. Eventually Arista is going to move to 64-bit only, but that should give you enough time to get more RAM! 
 
