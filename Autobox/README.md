@@ -105,4 +105,4 @@ sudo dnf config-manager --set-enabled crb
 sudo dnf install elrepo-release
 </pre>
 
-This will build out the base box that everything else can be build on. 
+This will build out the base box that everything else can be built on. 
