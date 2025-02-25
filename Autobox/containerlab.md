@@ -49,10 +49,10 @@ You want the cEOS version, not the cEOS64 version. The cEOS64 works, but it take
 
 Upload that file to the Linux system. You can use any scp client to get the file on there, but I like [WinSCP](https://winscp.net/eng/download.php) (and FileZilla is also a good choice).
 
-Once the image is on the Autobox system, import the image into docker. 
+Once the image is on the Autobox system, import the image into docker. This process may take a minute or two. 
 
 <pre>
-sudo docker import cEOS-lab-4.33.2F.tar ceos:4.33.2F`
+sudo docker import cEOS-lab-4.33.2F.tar ceos:4.33.2F
 </pre>
 
 Verify that the file shows up in the local image repo: 
@@ -66,20 +66,26 @@ You should see an output like this:
 <pre>
 $ sudo docker image list
 REPOSITORY   TAG       IMAGE ID       CREATED         SIZE
-ceos         4.31.2F   b22dab620e9c   8 seconds ago   2.01GB
+ceos         4.33.2F   0bae14373185   24 seconds ago   2.12GB
 </pre>
 
 ## Installing Containerlab
 
-Containerlab pretty much installs itself. 
+Containerlab pretty much installs itself. Run the following command. 
 
 <pre>
 bash -c "$(curl -sL https://get.containerlab.dev)"
 </pre>
 
+Be sure to read the instructions after the installation is complete. It wants you to run a command to make sure you're part of the group `clab_admins`. In my case, my username is tony, so I ran the following command. 
 
+<pre>
+sudo usermod -aG clab_admins tony && newgrp clab_admins
+</pre>
 
 ### Install Arista Ansible Collections
+
+
 
 `ansible-galaxy collection install arista.eos`
 
