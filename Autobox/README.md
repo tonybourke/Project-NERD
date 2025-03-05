@@ -64,6 +64,13 @@ Install ansible-lint (used by the Ansible extension for VS Code):
   pip3 install ansible-lint
 </pre>
 
+## Install Git
+
+Git is the version control system that is widely used in network automation. 
+
+<pre>
+  sudo dnf -y install git
+</pre>
 ## Installing Coder
 
 As the regular user, run the following command: 
