@@ -83,7 +83,7 @@ You'll be asked for the sudo password (just your normal password when you create
 Next, tell systemd to enable and run coder-server. Run the command:
 
 <pre>
-sudo systemctl enable --now code-server@$USER`
+sudo systemctl enable --now code-server@$USER
 </pre>
 
 
