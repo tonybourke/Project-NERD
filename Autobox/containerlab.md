@@ -52,7 +52,7 @@ Upload that file to the Linux system. You can use any scp client to get the file
 Once the image is on the Autobox system, import the image into docker. 
 
 <pre>
-sudo docker import cEOS-lab-4.33.2F.tar ceos:4.33.2F`
+sudo docker import cEOS-lab-4.33.2F.tar ceos:4.33.2F
 </pre>
 
 Verify that the file shows up in the local image repo: 
@@ -78,14 +78,3 @@ bash -c "$(curl -sL https://get.containerlab.dev)"
 </pre>
 
 
-
-### Install Arista Ansible Collections
-
-`ansible-galaxy collection install arista.eos`
-
-This will install the , as well as the arista.eos and arista.cvp collections.
-
-From the https://avd.arista.com website, run the following command: 
-
-`export ARISTA_AVD_DIR=$(ansible-galaxy collection list arista.avd --format yaml | head -1 | cut -d: -f1)
-pip3 install -r ${ARISTA_AVD_DIR}/arista/avd/requirements.txt`
