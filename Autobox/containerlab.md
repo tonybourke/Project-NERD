@@ -49,10 +49,10 @@ You want the cEOS version, not the cEOS64 version. The cEOS64 works, but it take
 
 Upload that file to the Linux system. You can use any scp client to get the file on there, but I like [WinSCP](https://winscp.net/eng/download.php) (and FileZilla is also a good choice).
 
-Once the image is on the Autobox system, import the image into docker. 
+Once the image is on the Autobox system, import the image into docker (this command may take a minute or two). 
 
 <pre>
-sudo docker import cEOS-lab-4.33.2F.tar ceos:4.33.2F
+sudo docker import cEOS-lab-4.33.2F.tar.xz ceos:4.33.2F
 </pre>
 
 Verify that the file shows up in the local image repo: 
