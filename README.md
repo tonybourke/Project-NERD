@@ -29,4 +29,4 @@ The <ins>B</ins>ase <ins>A</ins>utomation <ins>S</ins>ystem for <ins>E</ins>engi
 
 The BASE Box is just the basics: Linux, Python, Ansible, and Code Server. You can add anything on top of this of course, but it's a good starting point. 
 
-[BASE Box](BASE Box)
+[BASE Box](BASE%20Box)
