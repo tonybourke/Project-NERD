@@ -23,7 +23,6 @@ echo "auth: password" > ~/.config/code-server/config.yaml
 echo "bind-addr: 0.0.0.0:8080" >> ~/.config/code-server/config.yaml
 echo "cert: true" >> ~/.config/code-server/config.yaml
 hashpassword=$(python3 mkargon2hash.py $password)
-echo $hashpassword
 echo "hashed-password: $hashpassword" >> ~/.config/code-server/config.yaml
 echo "Now restarting code-server to activate new settings. The config file can be edited at ~/config/code-server/config.yaml"
 sudo systemctl restart code-server@$USER
