@@ -164,7 +164,7 @@ Upload that file to the Linux system. You can use any scp client to get the file
 Once the image is on the Autobox system, import the image into docker. This process may take a minute or two. 
 
 <pre>
-sudo docker import cEOS-lab-4.33.2F.tar ceos:4.33.2F
+sudo docker import cEOS-lab-4.33.2F.tar.xz ceos:4.33.2F
 </pre>
 
 Verify that the file shows up in the local image repo: 
