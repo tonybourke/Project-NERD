@@ -82,8 +82,8 @@ Install ansible-lint (used by the Ansible extension for VS Code):
 The Elrepo project has a more packages that aren't part of the mainline package repos, but are useful for various projects (including network automation). 
 
 <pre>
-sudo dnf config-manager --set-enabled crb
-sudo dnf install elrepo-release
+sudo dnf -y config-manager --set-enabled crb
+sudo dnf -y install elrepo-release
 </pre>
 
 ## Install Git
