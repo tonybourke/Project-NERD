@@ -32,18 +32,6 @@ You can use any hypervisor that you like. I've been playing with Proxmox, but an
 
 * Download the **minimal** ISO image for 9.5 (https://almalinux.org/get-almalinux/)
 
-## Resources 
-
-How much disk, RAM, and vCPUs you give to a device depends of course on what you're going to do with it. You can change the RAM and vCPU allotments easily (requires a shutdown/startup), though changing disk allocations can be a bit more complicated. 
-
-If you're just playing around here's what I would recommend: 
-
-* 8 GB of RAM
-* 60 GB of disk
-* 4 vCPUs
-* Set an IP address if you don't want to use DHCP
-* Configure a user account and make it adminsitrator (to allow `sudo`)
-
 ### Update 
 
 When the system is installed and booted, log in with your user account and update the package repos. 
