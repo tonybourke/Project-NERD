@@ -183,20 +183,3 @@ Be sure to read the instructions after the installation is complete. It wants yo
 sudo usermod -aG clab_admins tony && newgrp clab_admins
 </pre>
 
-### Install Arista Ansible Collections
-
-
-`ansible-galaxy collection install arista.eos`
-
-This will install the , as well as the arista.eos and arista.cvp collections.
-
-From the https://avd.arista.com website, run the following command: 
-
-`export ARISTA_AVD_DIR=$(ansible-galaxy collection list arista.avd --format yaml | head -1 | cut -d: -f1)
-pip3 install -r ${ARISTA_AVD_DIR}/arista/avd/requirements.txt`
-
-### Install extra Python modules
-
-<pre>
-pip3 install ansible-pylibssh paramiko
-</pre>
