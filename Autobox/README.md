@@ -3,7 +3,7 @@
 This toolkit includes the following: 
 
 * Linux VM (AlmaLinux in this case)
-* Coder (VS Code running as a web application)
+* Code Server (VS Code running as a web application)
 * Ansible (free, open source version)
 
 This will be the basis that other components will be installed upon (such as containerlab, InfluxDB, etc.).
