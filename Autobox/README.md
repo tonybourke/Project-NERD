@@ -61,44 +61,13 @@ There's several ways to install Ansible, and I find pip3 to be the best so far.
 Install ansible-lint (used by the Ansible extension for VS Code): 
 
 <pre>
-  pip3 install ansible-lint`
+  pip3 install ansible-lint
 </pre>
 
-## Installing Coder
+## Enable Repos
 
-As the regular user, run the following command: 
-
-<pre>curl -fsSL https://code-server.dev/install.sh | sh
-</pre>
-
-You'll be asked for the sudo password (just your normal password when you created the account).
-
-Next, tell systemd to enable and run coder-server. Run the command:
-
-<pre>
-sudo systemctl enable --now code-server@$USER`
-</pre>
-
-
-### Enable External Access Through a Self-Signed Certificate
-
-After code-server is installed, you will want to enable it to be accessed remotely through HTTPS and a self-signed certificate. 
-
-Run the following command for Alma:
-<pre>
-curl -fsSL https://raw.githubusercontent.com/tonybourke/Project-NERD/refs/heads/main/Autobox/enable_alma_https.sh > enable_alma_https.sh ; sh enable_alma_https.sh
-</pre>
-
-You'll be prompted to set a password. <b>Don't use a password you use for other places. The password is stored in a config file in plain text right now. At some point a more secure method will be implemented, I'm looking at various options.</b>
-
-
-The script will also open TCP port 8080 to your Linux firewall. You should be able to open up your code-server by going to https://your.ip:8080
-
-## Instal Extra Repos (Useful for Network Automation)
 
 The Elrepo project has a more packages that aren't part of the mainline package repos, but are useful for various projects (including network automation). 
-
-
 
 <pre>
 sudo dnf config-manager --set-enabled crb
@@ -114,3 +83,33 @@ dnf -y install git
 </pre>
 
 This will build out the base box that everything else can be built on. 
+
+## Installing Coder
+
+As the regular user, run the following command: 
+
+<pre>curl -fsSL https://code-server.dev/install.sh | sh
+</pre>
+
+You'll be asked for the sudo password (just your normal password when you created the account).
+
+Next, tell systemd to enable and run coder-server. Run the command:
+
+<pre>
+sudo systemctl enable --now code-server@$USER
+</pre>
+
+
+### Enable External Access Through a Self-Signed Certificate
+
+After code-server is installed, you will want to enable it to be accessed remotely through HTTPS and a self-signed certificate. 
+
+Run the following command for Alma:
+<pre>
+curl -fsSL https://raw.githubusercontent.com/tonybourke/Project-NERD/refs/heads/main/Autobox/enable_alma_https.sh > enable_alma_https.sh ; sh enable_alma_https.sh
+</pre>
+
+You'll be prompted to set a password. The password will be hashed through a Python script that the Shell script will download using Argon2, and stored in the config.yaml file. 
+
+The script will also open TCP port 8080 to your Linux firewall. You should be able to open up your code-server by going to https://your.ip:8080
+
