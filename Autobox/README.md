@@ -12,6 +12,9 @@ This toolkit includes the following:
 * * 2 "hosts" (cEOS devices)
 * * 1 external router  
 
+![Medium Topology](medium_topology.png "Medium Topology")
+
+
 
 ## Requirements for Medimum Topology (9 nodes)
 
