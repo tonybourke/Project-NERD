@@ -67,7 +67,7 @@ You'll want to have pip installed (pip3 since it's Python 3's pip) as it will in
 There's several ways to install Ansible, and I find pip3 to be the best so far. 
 
 <pre>
-  pip3 install ansible-core
+  pip3 install ansible
 </pre>
 
 Install ansible-lint (used by the Ansible extension for VS Code): 
