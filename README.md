@@ -20,3 +20,11 @@ Using the instruction you'll have a VM with the following:
 * Ansible for automating the environment
 
 [NERD Box: Network Automation with Ansible and containerlab](Autobox)
+
+## The BASE Box (Linux and Code Server)
+
+The <ins>B</ins>ase <ins>A</ins>utomation <ins>S</ins>ystem for <ins>E</ins>engineers. The BASE Box. 
+
+The BASE Box is just the basics: Linux, Python, and Code-Server. You can add anything on top of this of course, but it's good
+
+[NERD Box: Network Automation with Ansible and containerlab](Autobox)
