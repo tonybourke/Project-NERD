@@ -27,6 +27,6 @@ Using the instruction you'll have a VM with the following:
 
 The <ins>B</ins>ase <ins>A</ins>utomation <ins>S</ins>ystem for <ins>E</ins>engineers. The BASE Box. 
 
-The BASE Box is just the basics: Linux, Python, and Code-Server. You can add anything on top of this of course, but it's good
+The BASE Box is just the basics: Linux, Python, Ansible, and Code Server. You can add anything on top of this of course, but it's a good starting point. 
 
 [NERD Box: Network Automation with Ansible and containerlab](Autobox)
