@@ -96,7 +96,7 @@ dnf -y install git
 
 This will build out the base box that everything else can be built on. 
 
-## Installing Coder
+## Installing Code Server
 
 As the regular user, run the following command: 
 
