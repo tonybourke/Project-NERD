@@ -6,4 +6,4 @@ password = sys.argv[1]
 ph = argon2.PasswordHasher()
 
 hashed_password = ph.hash(password)
-print(f"Hashed password: {hashed_password}")
+print(f"{hashed_password}")
