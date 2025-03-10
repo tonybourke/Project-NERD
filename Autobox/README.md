@@ -105,4 +105,12 @@ sudo dnf config-manager --set-enabled crb
 sudo dnf install elrepo-release
 </pre>
 
+## Install Git
+
+Git is used extensively in network automation and will need to be installed. 
+
+<pre>
+dnf -y install git
+</pre>
+
 This will build out the base box that everything else can be built on. 

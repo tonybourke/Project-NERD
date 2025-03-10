@@ -8,6 +8,12 @@ else
     exit
 fi
 
+
+# Grab the Python script to generate a password
+
+curl -fsSL https://raw.githubusercontent.com/tonybourke/Project-NERD/refs/heads/main/Autobox/mkargon2hash.py > mkargon2hash.py
+
+
 echo "What password would you like to set for access to code-server?"
 read -s password
 
@@ -15,7 +21,8 @@ cp ~/.config/code-server/config.yaml ~/.config/code-server/config.yaml.orig
 echo "auth: password" > ~/.config/code-server/config.yaml
 echo "bind-addr: 0.0.0.0:8080" >> ~/.config/code-server/config.yaml
 echo "cert: true" >> ~/.config/code-server/config.yaml
-echo "password: $password" >> ~/.config/code-server/config.yaml
+hashpassword = python3 mkargon2hash.py $password 
+echo "hashed_passwrd: $password" >> ~/.config/code-server/config.yaml
 echo "Now restarting code-server to activate new settings. The config file can be edited at ~/config/code-server/config.yaml"
 sudo systemctl restart code-server@$USER
 

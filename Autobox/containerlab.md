@@ -11,6 +11,12 @@ I've included an Arista cEOS containerlab topology of two spines, four leafs, an
 
 There's other network operating systems you can use of course, but I chose Arista cEOS because 1) I'm familiar with it, having taught Arista courses, and 2) Arista makes it very easy to access both cEOS and vEOS for labbing. 
 
+### Small Clos Topology Requirements
+
+* 8 vCPUs (10 is better)
+* 12 GB of RAM
+* 60 GB of storage
+
 
 
 ## Install Docker
@@ -86,7 +92,6 @@ sudo usermod -aG clab_admins tony && newgrp clab_admins
 ### Install Arista Ansible Collections
 
 
-
 `ansible-galaxy collection install arista.eos`
 
 This will install the , as well as the arista.eos and arista.cvp collections.
@@ -95,3 +100,9 @@ From the https://avd.arista.com website, run the following command:
 
 `export ARISTA_AVD_DIR=$(ansible-galaxy collection list arista.avd --format yaml | head -1 | cut -d: -f1)
 pip3 install -r ${ARISTA_AVD_DIR}/arista/avd/requirements.txt`
+
+### Install extra Python modules
+
+<pre>
+pip3 install ansible-pylibssh paramiko
+</pre>
