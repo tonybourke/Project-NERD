@@ -1,14 +1,23 @@
-# NERD:Autobox A VM for Network Automation
+# NERD:Autobox A VM for Network Automation Labbing
 
 This toolkit includes the following: 
 
 * Linux VM (AlmaLinux in this case)
 * Code Server (VS Code running as a web application)
 * Ansible (free, open source version)
+* Containerlab 
+* Arista cEOS-based Lab Topology (9 nodes, "medium" sized topology)
+* * 2 spines
+* * 4 leafs
+* * 2 "hosts" (cEOS devices)
+* * 1 external router  
 
-This will be the basis that other components will be installed upon (such as containerlab, InfluxDB, etc.).
 
-While this system wasn't designed to be a production system, you can of course use it as a starting point for making a prodution automation platform. 
+## Requirements for Medimum Topology (9 nodes)
+
+* 8 vCPUs (10 is better)
+* 16 GB of RAM
+* 60 GB of storage
 
 ## Installing Linux
 
@@ -113,3 +122,90 @@ You'll be prompted to set a password. The password will be hashed through a Pyth
 
 The script will also open TCP port 8080 to your Linux firewall. You should be able to open up your code-server by going to https://your.ip:8080
 
+## Install Docker
+
+Containerlab utilizes Docker for containers. I couldn't get Podman to work, so make sure you install actual Docker. 
+
+<pre>
+sudo yum install -y yum-utils
+</pre>
+
+Add the docker repo. 
+
+<pre>
+sudo yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+</pre>
+
+With the docker repo added, install docker and some other componenets. 
+<pre>
+sudo yum install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+</pre>
+
+The following command will enable Docker to autostart when the system is booted. 
+
+<pre>sudo systemctl enable docker</pre>
+
+The following command will start Docker now. 
+
+<pre>sudo systemctl start docker</pre>
+
+
+## Installing a Container (Arista cEOS)
+
+You'll need to obtain a copy of cEOS from Arista.com. Go to [arista.com](https://arista.com) and then go to Support, then Download Software, and download the latest version of cEOS-lab (4.33.2F as of writing of this guide). You'll need an account to download the container, but it should be free. 
+
+You want the cEOS version, not the cEOS64 version. The cEOS64 works, but it takes up about twice as much RAM in Docker. I'm not aware of any benefit to running the 64-bit version for labs. Eventually Arista is going to move to 64-bit only, but that should give you enough time to get more RAM! 
+
+Upload that file to the Linux system. You can use any scp client to get the file on there, but I like [WinSCP](https://winscp.net/eng/download.php) (and FileZilla is also a good choice).
+
+Once the image is on the Autobox system, import the image into docker. This process may take a minute or two. 
+
+<pre>
+sudo docker import cEOS-lab-4.33.2F.tar ceos:4.33.2F
+</pre>
+
+Verify that the file shows up in the local image repo: 
+
+<pre>
+sudo docker image list
+</pre>
+
+You should see an output like this: 
+
+<pre>
+$ sudo docker image list
+REPOSITORY   TAG       IMAGE ID       CREATED         SIZE
+ceos         4.33.2F   0bae14373185   24 seconds ago   2.12GB
+</pre>
+
+## Installing Containerlab
+
+Containerlab pretty much installs itself. Run the following command. 
+
+<pre>
+bash -c "$(curl -sL https://get.containerlab.dev)"
+</pre>
+
+Be sure to read the instructions after the installation is complete. It wants you to run a command to make sure you're part of the group `clab_admins`. In my case, my username is tony, so I ran the following command. 
+
+<pre>
+sudo usermod -aG clab_admins tony && newgrp clab_admins
+</pre>
+
+### Install Arista Ansible Collections
+
+
+`ansible-galaxy collection install arista.eos`
+
+This will install the , as well as the arista.eos and arista.cvp collections.
+
+From the https://avd.arista.com website, run the following command: 
+
+`export ARISTA_AVD_DIR=$(ansible-galaxy collection list arista.avd --format yaml | head -1 | cut -d: -f1)
+pip3 install -r ${ARISTA_AVD_DIR}/arista/avd/requirements.txt`
+
+### Install extra Python modules
+
+<pre>
+pip3 install ansible-pylibssh paramiko
+</pre>

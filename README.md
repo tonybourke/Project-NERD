@@ -18,6 +18,8 @@ Using the instruction you'll have a VM with the following:
 * Python 3.9
 * Code-server (VS Code running as a web application)
 * Ansible for automating the environment
+* Containerlab
+* Containerlab Arista cEOS Topology
 
 [NERD Box: Network Automation with Ansible and containerlab](Autobox)
 
