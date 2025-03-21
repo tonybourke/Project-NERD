@@ -8,9 +8,9 @@ The instructions are geared towards home labs, but they can be used as the basis
 
 These toolkits should provide an environment to explore network automation with containerlab, VS Code (as a web app), and Ansible (and/or Python).  One of the challenges for a lot of networking people is setting up such an environment. There's lots of instructions around, but I've yet to see a single set of instructions for building all of these pieces together. I think that creates a lot of friction for the many networking people who aren't as used to tools of the system administrator trade (Linux, Linux CLI, etc.)
 
-## The Autobox
+## The Autobox (All In One Automation System)
 
-The introductory NERD Box is a base VM that has VS Code (running on-box as a webapp) and Ansible. From this type of box you can run things like Docker, containerlab, Grafana, InfluxDB, etc. The rest of the boxes will use this box as the starting point. 
+The introductory NERD Box is an all-in-one automation lanbing platform called The Autobox. It runs containerlab with a leaf/spine topology with full data and control plane (Arista cEOS), Ansible, a built-in IDE (VS Code running as a webapp), and Python. It's everything you need to play with network automation. You can also install just about anything on top of it. 
 
 Using the instruction you'll have a VM with the following: 
 
@@ -19,9 +19,10 @@ Using the instruction you'll have a VM with the following:
 * Code-server (VS Code running as a web application)
 * Ansible for automating the environment
 * Containerlab
+* Docker CE (Community Edition, free)
 * Containerlab Arista cEOS Topology
 
-[NERD Box: Network Automation with Ansible and containerlab](Autobox)
+<img src="Autobox/medium_topology.png" width=500>
 
 ## The BASE Box (Linux and Code Server)
 
