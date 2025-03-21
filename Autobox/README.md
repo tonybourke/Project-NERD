@@ -185,6 +185,8 @@ sudo usermod -aG clab_admins tony && newgrp clab_admins
 
 ## Ready for a Topology
 
+Your system is ready for a network and network automation! 
+
 From here you can create your own topology for containerlab, or you can use the pre-made topology (topologies) in this repo: https://github.com/tonybourke/NERD_clab_topologies 
 
 
