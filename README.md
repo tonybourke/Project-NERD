@@ -22,6 +22,9 @@ Using the instruction you'll have a VM with the following:
 * Docker CE (Community Edition, free)
 * Containerlab Arista cEOS Topology
 
+Instructions to build the Autobox: [Autobox](Autobox)
+
+
 <img src="Autobox/medium_topology.png" width=500>
 
 ## The BASE Box (Linux and Code Server)
