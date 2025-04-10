@@ -129,7 +129,7 @@ sudo yum-config-manager --add-repo https://download.docker.com/linux/centos/dock
 
 With the docker repo added, install docker and some other componenets. 
 <pre>
-sudo yum install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+sudo yum -y install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 </pre>
 
 The following command will enable Docker to autostart when the system is booted. 
