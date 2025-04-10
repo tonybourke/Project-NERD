@@ -3,8 +3,8 @@ pip3 install ansible
 pip3 install ansible-lint
 sudo dnf -y config-manager --set-enabled crb
 sudo dnf -y install elrepo-release
-dnf -y install git
-dnf -y install vim
+sudo dnf -y install git
+sudo dnf -y install vim
 
 curl -fsSL https://code-server.dev/install.sh | sh
 sudo systemctl enable --now code-server@$USER
