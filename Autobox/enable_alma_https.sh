@@ -16,7 +16,7 @@ curl -fsSL https://raw.githubusercontent.com/tonybourke/Project-NERD/refs/heads/
 
 echo "Installing Argon2 Python3 module (for making a secure hash)"
 pip3 install argon2-cffi
-echo "What password would you like to set for access to code-server?"
+echo -e "\e[31mWhat password would you like to set for access to code-server?\e[0m"
 read -s password
 
 cp ~/.config/code-server/config.yaml ~/.config/code-server/config.yaml.orig
