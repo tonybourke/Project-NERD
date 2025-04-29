@@ -18,9 +18,11 @@ This toolkit includes the following:
 
 ## Requirements for Medimum Topology (9 nodes)
 
-* 8 vCPUs (10 is better)
+* 4 vCPUs (6 or 8 is better)
 * 16 GB of RAM
 * 60 GB of storage
+
+The original requirement was 8 vCPUs, but I've been running on 4 vCPUs in one of my environments with a full EVPN/VXLAN fabric running, and CPU utilization is low. My processor is an AMD 5950x on a hypervisor, so the core speeds aren't super high, so I think this should work for a variety of platforms on 4 vCPUs. 
 
 ## Installing Linux
 
