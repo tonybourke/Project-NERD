@@ -18,7 +18,7 @@ This toolkit includes the following:
 
 ## Requirements for Medimum Topology (9 nodes)
 
-* 4 vCPUs (6 or 8 is better)
+* 4 vCPUs 
 * 16 GB of RAM
 * 60 GB of storage
 
