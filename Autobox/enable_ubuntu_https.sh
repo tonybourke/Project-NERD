@@ -18,12 +18,15 @@ echo "auth: password" > ~/.config/code-server/config.yaml
 echo "bind-addr: 0.0.0.0:8080" >> ~/.config/code-server/config.yaml
 echo "cert: true" >> ~/.config/code-server/config.yaml
 
-hashpassword=$(argon2 $password)
+salt=$(openssl rand -base64 12)
+
+hashpassword=$(echo -n $password | argon2 $salt -e)
 
 echo "hashed-password: $hashpassword" >> ~/.config/code-server/config.yaml
 echo "Now restarting code-server to activate new settings. The config file can be edited at ~/config/code-server/config.yaml"
 sudo systemctl restart code-server@$USER
 
 echo "Configuring the firewall to allow port 8080"
-sudo firewall-cmd --add-port=8080/tcp --permanent
-sudo systemctl restart firewalld
+
+sudo apt-get install ufw
+sudo ufw allow 8080
