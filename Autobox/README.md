@@ -16,7 +16,7 @@ This toolkit includes the following:
 
 
 
-## Requirements for Medimum Topology (9 nodes)
+## Requirements for Medium Topology (9 nodes)
 
 * 4 vCPUs 
 * 16 GB of RAM
@@ -32,7 +32,7 @@ You can use any hypervisor that you like. I've been playing with Proxmox, but an
 
 ## Installing Linux
 
-* Download the **minimal** ISO image for 9.5 (https://almalinux.org/get-almalinux/)
+* Download the **minimal** ISO image for 10.0 (https://almalinux.org/get-almalinux/)
 
 ### Update 
 
@@ -72,8 +72,7 @@ Install ansible-lint (used by the Ansible extension for VS Code):
 The Elrepo project has a more packages that aren't part of the mainline package repos, but are useful for various projects (including network automation). 
 
 <pre>
-sudo dnf -y config-manager --set-enabled crb
-sudo dnf -y install elrepo-release
+sudo dnf -y install epel-release
 </pre>
 
 ## Install Git
