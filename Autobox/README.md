@@ -78,7 +78,7 @@ Upload that file to the Linux system. You can use any scp client to get the file
 Once the image is on the Autobox system, import the image into docker. This process may take a minute or two. 
 
 <pre>
-sudo docker import cEOS-lab-4.33.2F.tar.xz ceos:4.33.2F
+sudo docker import cEOS-lab-4.34.0F.tar.xz ceos:4.34.0F
 </pre>
 
 Verify that the file shows up in the local image repo: 
@@ -91,8 +91,9 @@ You should see an output like this:
 
 <pre>
 $ sudo docker image list
-REPOSITORY   TAG       IMAGE ID       CREATED         SIZE
-ceos         4.33.2F   0bae14373185   24 seconds ago   2.12GB
+REPOSITORY   TAG            IMAGE ID       CREATED              SIZE
+ceos         4.34.0F        ecfdc49657ee   14 seconds ago       2.14GB
+
 </pre>
 
 ## Installing Containerlab
