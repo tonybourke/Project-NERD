@@ -1,12 +1,6 @@
 # This script changes the code-server config file to allow access via 8080
 
-if [ -e ~/.config/code-server/config.yaml ]
-then
-    echo "Code-server installation detected, proceeding"
-else
-    echo "config.yaml file not found, please install and enable code-server"
-    exit
-fi
+
 
 echo "Installing Python3 pip and Ansible and Ansible components"
 
@@ -28,6 +22,15 @@ curl -fsSL https://code-server.dev/install.sh | sh
 
 
 sudo systemctl enable --now code-server@$USER
+
+
+if [ -e ~/.config/code-server/config.yaml ]
+then
+    echo "Code-server installation detected, proceeding"
+else
+    echo "config.yaml file not found, please install and enable code-server"
+    exit
+fi
 
 
 echo -e "\e[31mWhat password would you like to set for access to code-server?\e[0m"
