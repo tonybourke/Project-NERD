@@ -44,69 +44,20 @@ sudo dnf -y update
 
 This is a good security step. It may take a few minutes depending on your network connection. Once this process is complete, reboot the system as it may have updated the kernel. 
 
-## Install Python pip (Python Package Manager)
 
-You'll want to have pip installed (pip3 since it's Python 3's pip) as it will install lots of required Python modules that will be needed later. 
+### Run installer script
 
-<pre>
-  sudo dnf -y install python3-pip
-</pre>
+The next step is to run a script that will install a lot of the necessary components:
 
-## Install Ansible
+* Enable elrepo (Enterprise Linux repository)
+* Install and enable code-server (with encrypted password)
+* Install git
+* Install Ansible, ansible-lint
+* Install and enable Docker
+* Install OpenSSL
+* Install Vim (text editor upgrade to default vi)
 
-There's several ways to install Ansible, and I find pip3 to be the best so far. 
-
-<pre>
-  pip3 install ansible
-</pre>
-
-Install ansible-lint (used by the Ansible extension for VS Code): 
-
-<pre>
-  pip3 install ansible-lint
-</pre>
-
-## Enable Repos
-
-
-The Elrepo project has a more packages that aren't part of the mainline package repos, but are useful for various projects (including network automation). 
-
-<pre>
-sudo dnf -y config-manager --set-enabled crb
-sudo dnf -y install elrepo-release
-</pre>
-
-## Install Git
-
-Git is used extensively in network automation and will need to be installed. 
-
-<pre>
-dnf -y install git
-</pre>
-
-This will build out the base box that everything else can be built on. 
-
-## Installing Code Server
-
-As the regular user, run the following command: 
-
-<pre>curl -fsSL https://code-server.dev/install.sh | sh
-</pre>
-
-You'll be asked for the sudo password (just your normal password when you created the account).
-
-Next, tell systemd to enable and run coder-server. Run the command:
-
-<pre>
-sudo systemctl enable --now code-server@$USER
-</pre>
-
-
-### Enable External Access Through a Self-Signed Certificate
-
-After code-server is installed, you will want to enable it to be accessed remotely through HTTPS and a self-signed certificate. 
-
-Run the following command for Alma:
+Run the following command for Alma 10 to run the install script:
 <pre>
 curl -fsSL https://raw.githubusercontent.com/tonybourke/Project-NERD/refs/heads/main/Autobox/enable_alma_10_https.sh > enable_alma_https.sh ; sh enable_alma_10_https.sh
 </pre>
@@ -114,33 +65,6 @@ curl -fsSL https://raw.githubusercontent.com/tonybourke/Project-NERD/refs/heads/
 You'll be prompted to set a password. The password will be hashed through the Argon2 binary and stored in the config.yaml file encrypted.
 
 The script will also open TCP port 8080 to your Linux firewall. You should be able to open up your code-server by going to https://your.ip:8080
-
-## Install Docker
-
-Containerlab utilizes Docker for containers. I couldn't get Podman to work, so make sure you install actual Docker. 
-
-<pre>
-sudo yum install -y yum-utils
-</pre>
-
-Add the docker repo. 
-
-<pre>
-sudo yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
-</pre>
-
-With the docker repo added, install docker and some other componenets. 
-<pre>
-sudo yum -y install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
-</pre>
-
-The following command will enable Docker to autostart when the system is booted. 
-
-<pre>sudo systemctl enable docker</pre>
-
-The following command will start Docker now. 
-
-<pre>sudo systemctl start docker</pre>
 
 
 ## Installing a Container (Arista cEOS)
