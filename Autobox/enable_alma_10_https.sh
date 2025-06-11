@@ -19,6 +19,7 @@ echo "Installing other utilities"
 sudo dnf -y install epel-release
 sudo dnf -y install argon2
 sudo dnf -y install git
+sudo dnf -y install openssl
 
 echo "Installing and enabling code server"
 
@@ -31,11 +32,17 @@ sudo systemctl enable --now code-server@$USER
 echo -e "\e[31mWhat password would you like to set for access to code-server?\e[0m"
 read -s password
 
+
+
+
+
 cp ~/.config/code-server/config.yaml ~/.config/code-server/config.yaml.orig
 echo "auth: password" > ~/.config/code-server/config.yaml
 echo "bind-addr: 0.0.0.0:8080" >> ~/.config/code-server/config.yaml
 echo "cert: true" >> ~/.config/code-server/config.yaml
-hashpassword=$(argon2 $password)
+
+salt=$(openssl rand -base64 12)
+hashpassword=$(echo $password | argon2 $salt -e)
 echo "hashed-password: $hashpassword" >> ~/.config/code-server/config.yaml
 echo "Now restarting code-server to activate new settings. The config file can be edited at ~/config/code-server/config.yaml"
 sudo systemctl restart code-server@$USER
