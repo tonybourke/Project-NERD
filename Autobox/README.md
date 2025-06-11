@@ -59,7 +59,7 @@ The next step is to run a script that will install a lot of the necessary compon
 
 Run the following command for Alma 10 to run the install script:
 <pre>
-curl -fsSL https://raw.githubusercontent.com/tonybourke/Project-NERD/refs/heads/dev/Autobox/enable_alma_10_https.sh > enable_alma_10_https.sh ; sh enable_alma_10_https.sh
+curl -fsSL https://raw.githubusercontent.com/tonybourke/Project-NERD/refs/heads/main/Autobox/enable_alma_10_https.sh > enable_alma_10_https.sh ; sh enable_alma_10_https.sh
 </pre>
 
 You'll be prompted to set a password. The password will be hashed through the Argon2 binary and stored in the config.yaml file encrypted.
