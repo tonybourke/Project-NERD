@@ -10,7 +10,7 @@ fi
 
 echo "Installing Python3 pip and Ansible and Ansible components"
 
-sudo dnf -y isntall python3-pip
+sudo dnf -y install python3-pip
 pip3 install ansible
 pip3 install ansible-lint
 
