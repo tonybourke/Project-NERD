@@ -16,9 +16,9 @@ This toolkit includes the following:
 
 
 
-## Requirements for Medimum Topology (9 nodes)
+## Requirements for Medium Topology (9 nodes)
 
-* 4 vCPUs (6 or 8 is better)
+* 4 vCPUs 
 * 16 GB of RAM
 * 60 GB of storage
 
@@ -32,7 +32,8 @@ You can use any hypervisor that you like. I've been playing with Proxmox, but an
 
 ## Installing Linux
 
-* Download the **minimal** ISO image for 10 (https://almalinux.org/get-almalinux/)
+
+* Download the **minimal** ISO image for 10.0 (https://almalinux.org/get-almalinux/)
 
 ### Update 
 
