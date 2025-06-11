@@ -32,7 +32,7 @@ You can use any hypervisor that you like. I've been playing with Proxmox, but an
 
 ## Installing Linux
 
-* Download the **minimal** ISO image for 9.5 (https://almalinux.org/get-almalinux/)
+* Download the **minimal** ISO image for 10 (https://almalinux.org/get-almalinux/)
 
 ### Update 
 
@@ -59,7 +59,7 @@ The next step is to run a script that will install a lot of the necessary compon
 
 Run the following command for Alma 10 to run the install script:
 <pre>
-curl -fsSL https://raw.githubusercontent.com/tonybourke/Project-NERD/refs/heads/main/Autobox/enable_alma_10_https.sh > enable_alma_https.sh ; sh enable_alma_10_https.sh
+curl -fsSL https://raw.githubusercontent.com/tonybourke/Project-NERD/refs/heads/dev/Autobox/enable_alma_10_https.sh > enable_alma_https.sh ; sh enable_alma_10_https.sh
 </pre>
 
 You'll be prompted to set a password. The password will be hashed through the Argon2 binary and stored in the config.yaml file encrypted.
