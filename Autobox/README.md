@@ -108,10 +108,10 @@ After code-server is installed, you will want to enable it to be accessed remote
 
 Run the following command for Alma:
 <pre>
-curl -fsSL https://raw.githubusercontent.com/tonybourke/Project-NERD/refs/heads/main/Autobox/enable_alma_https.sh > enable_alma_https.sh ; sh enable_alma_https.sh
+curl -fsSL https://raw.githubusercontent.com/tonybourke/Project-NERD/refs/heads/main/Autobox/enable_alma_10_https.sh > enable_alma_https.sh ; sh enable_alma_10_https.sh
 </pre>
 
-You'll be prompted to set a password. The password will be hashed through a Python script that the Shell script will download using Argon2, and stored in the config.yaml file. 
+You'll be prompted to set a password. The password will be hashed through the Argon2 binary and stored in the config.yaml file encrypted.
 
 The script will also open TCP port 8080 to your Linux firewall. You should be able to open up your code-server by going to https://your.ip:8080
 
