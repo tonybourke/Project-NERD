@@ -41,21 +41,12 @@ Do a standard install and select "Ubuntu Server (minimized)" for the type of ins
 When the system boots up, log in as the user and update and upgrade components: 
 
 ```
-apt update
-apt update
+sudo apt update
+sudo apt -y upgrade
 ```
 
+## Install Components
 
+Run this script to install the various components needed (Ansible, Python pip, git, etc.)
 
-
-
-
-### Update 
-
-When the system is installed and booted, log in with your user account and update the package repos. 
-
-<pre>
-sudo dnf -y update
-</pre>
-
-This is a good security step. It may take a few minutes depending on your network connection. Once this process is complete, reboot the system as it may have updated the kernel. 
+curl -fsSL https://raw.githubusercontent.com/tonybourke/Project-NERD/refs/heads/main/Autobox/enable_ubuntu_https.sh > enable_ubuntu_https.sh ; bash enable_ubuntu_https.sh
