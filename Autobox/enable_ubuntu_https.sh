@@ -1,5 +1,36 @@
 # This script changes the code-server config file to allow access via 8080
 
+
+# This script changes the code-server config file to allow access via 8080
+
+
+
+echo "Installing Python3 pip and Ansible and Ansible components"
+
+sudo apt -y install python3-pip
+
+mkdir ~/.config/
+mkdir ~/.config/pip
+echo -e "[global]\nbreak-system-packages = true" >> ~/.config/pip/pip.conf
+
+pip3 install ansible
+pip3 install ansible-lint
+
+echo "Installing other utilities"
+
+sudo apt -y install argon2
+sudo apt -y install git
+sudo apt -y install vim
+
+echo "Installing and enabling code server"
+
+curl -fsSL https://code-server.dev/install.sh | sh
+
+
+sudo systemctl enable --now code-server@$USER
+
+
+
 if [ -e ~/.config/code-server/config.yaml ]
 then
     echo "Code-server installation detected, proceeding"
@@ -28,5 +59,5 @@ sudo systemctl restart code-server@$USER
 
 echo "Configuring the firewall to allow port 8080"
 
-sudo apt-get install ufw
+sudo apt-get -y install ufw
 sudo ufw allow 8080
