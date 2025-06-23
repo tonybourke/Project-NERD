@@ -24,6 +24,8 @@ curl -fsSL https://code-server.dev/install.sh | sh
 sudo systemctl enable --now code-server@$USER
 
 
+sleep 2
+
 if [ -e ~/.config/code-server/config.yaml ]
 then
     echo "Code-server installation detected, proceeding"
