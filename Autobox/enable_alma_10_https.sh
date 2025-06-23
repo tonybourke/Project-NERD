@@ -8,13 +8,8 @@ sudo dnf -y install python3-pip
 pip3 install ansible
 pip3 install ansible-lint
 
-echo "Installing other utilities"
 
-sudo dnf -y install epel-release
-sudo dnf -y install argon2
-sudo dnf -y install git
-sudo dnf -y install openssl
-sudo dnf -y install vim
+
 
 echo "Installing and enabling code server"
 
@@ -23,8 +18,15 @@ curl -fsSL https://code-server.dev/install.sh | sh
 
 sudo systemctl enable --now code-server@$USER
 
+echo "Installing other utilities"
 
-sleep 2
+
+sudo dnf -y install epel-release
+sudo dnf -y install argon2
+sudo dnf -y install git
+sudo dnf -y install openssl
+sudo dnf -y install vim
+
 
 if [ -e ~/.config/code-server/config.yaml ]
 then
