@@ -26,6 +26,7 @@ sudo dnf -y install argon2
 sudo dnf -y install git
 sudo dnf -y install openssl
 sudo dnf -y install vim
+sudo dnf -y install curl
 
 
 if [ -e ~/.config/code-server/config.yaml ]
@@ -67,3 +68,13 @@ sudo yum -y install docker-ce docker-ce-cli containerd.io docker-buildx-plugin d
 
 sudo systemctl enable docker
 sudo systemctl start docker
+
+echo "Downloading TLS setup script to /usr/local/bin/"
+
+sudo wget https://raw.githubusercontent.com/tonybourke/Project-NERD/refs/heads/main/Autobox/setup_tls.sh > /usr/local/bin/setup_tls.sh
+
+
+echo "Downloading TLS setup script to ~/.local/bin/"
+curl https://raw.githubusercontent.com/tonybourke/Project-NERD/refs/heads/main/Autobox/setup_tls.sh > ~/.local/bin/setup_tls.sh
+chmod +x ~/.local/bin/setup_tls.sh
+echo "Run command: setup_tls.sh [IP], i.e. 'sh /usr/local/bin/setup_tls.sh 192.168.1.100'"
